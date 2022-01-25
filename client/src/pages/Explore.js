@@ -7,6 +7,7 @@ import Auth from '../utils/auth';
 
 import Grid from '@mui/material/Grid';
 import { makeStyles } from '@material-ui/core';
+import Skeleton from '@mui/material/Skeleton';
 
 import ArtCarousel from '../components/ArtCarousel';
 import ArtSearch from '../components/ArtSearch';
@@ -74,7 +75,9 @@ const Explore = () => {
   return (
     <>
       {loading ? (
-        <div>Loading...</div>
+        <Skeleton>
+          <ArtCarousel art={carouselArt} />
+        </Skeleton>
       ) : (
         <div style={{ width: '100%' }}>
           <ArtCarousel art={carouselArt} />

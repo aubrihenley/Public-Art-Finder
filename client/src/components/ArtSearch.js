@@ -6,6 +6,7 @@ import { Select, FormControl, MenuItem, InputLabel } from '@mui/material';
 import { useQuery } from '@apollo/client';
 import { QUERY_ART_BY_LOCATION } from '../utils/queries';
 
+import Skeleton from '@mui/material/Skeleton';
 import ArtInArea from './ArtInArea';
 
 const ArtSearch = () => {
@@ -97,7 +98,7 @@ const ArtSearch = () => {
           <span style={{ color: 'violet' }}>E</span> STREET ART AROUND THE U.S.
         </Typography>
       </Container>
-      <div style={{margin: '1em'}}>
+      <div style={{ margin: '1em' }}>
         <FormControl fullWidth>
           <InputLabel id="state">State</InputLabel>
           <Select
@@ -117,7 +118,9 @@ const ArtSearch = () => {
           </Select>
         </FormControl>
         {loading ? (
-          <div>Loading...</div>
+          <Skeleton>
+            <ArtInArea art={artData} location={location} />
+          </Skeleton>
         ) : (
           <ArtInArea art={artData} location={location} />
         )}
